@@ -22,9 +22,9 @@ exports.Gems_create_post = async function (req, res) {
     // Even though bodies can be in many different formats, we will be picky
     // and require that it be a json object
     // {"Gems_type":"goat", "cost":12, "size":"large"}
-    document.name = req.body.name;
-    document.duration = req.body.duration;
-    document.director = req.body.director;
+    document.gems_type = req.body.gems_type;
+    document.size = req.body.size;
+    document.cost = req.body.cost;
     try {
         let result = await document.save();
         res.send(result);
@@ -42,10 +42,10 @@ exports.Gems_delete = function (req, res) {
 exports.Gems_update_put = function (req, res) {
     res.send('NOT IMPLEMENTED: Gems update PUT' + req.params.id);
 };
-exports.flim_view_all_Page = async function (req, res) {
+exports.Gems_view_all_Page = async function (req, res) {
     try {
-        theGemss = await Gems.find();
-        res.render('Gemss', { title: 'Gems Search Results', results: theGemss });
+        theGems = await Gems.find();
+        res.render('Gems', { title: 'Gems Search Results', results: theGems });
     }
     catch (err) {
         res.status(500);
