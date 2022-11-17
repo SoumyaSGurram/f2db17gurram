@@ -12,35 +12,35 @@ block content
     - let gemssize = toShow.size 
    
     div.row(class='mb-2') 
-        div.mr-1 ID is 
-        div #{gemsid} 
+      div.mr-1 ID is 
+      div #{gemsid} 
     - let actionid = "/resource/Gems/" + gemsid 
     form(id='GemsForm', action= actionid, method="PUT") 
-        div.form-group 
-            label.gemsAttr(for='gems_type') Costume type 
-            input#gems_type(type='text', name='gems_type', value= gems_type ) 
-        div.form-group 
-            label.gemsAttr(for='size') Costume size 
-            input#size(type='text', name='size', value= gemssize ) 
-        div.form-group 
-            label.gemsAttr(for='cost') Costume cost 
-            input#gemscost(type='number', name='cost', value= gemscost ) 
-        input(type="submit") 
+      div.form-group 
+          label.gemsAttr(for='gems_type') Costume type 
+          input#gems_type(type='text', name='gems_type', value= gems_type ) 
+      div.form-group 
+          label.gemsAttr(for='size') Costume size 
+          input#size(type='text', name='size', value= gemssize ) 
+      div.form-group 
+          label.gemsAttr(for='cost') Costume cost 
+          input#gemscost(type='number', name='cost', value= gemscost ) 
+      input(type="submit") 
  
-  script. 
-    document.forms['GemsForm'].addEventListener('submit', (event) => { 
-      event.preventDefault(); 
+    script. 
+        document.forms['GemsForm'].addEventListener('submit', (event) => { 
+        event.preventDefault(); 
       // TODO do something here to show user that form is being submitted 
       fetch(event.target.action, { 
-        method: 'PUT', 
-        body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
-      }).then((resp) => { 
-        return resp.json(); // or resp.text() or whatever the server sends 
-      }).then((body) => { 
-        alert("Update succeded") 
+          method: 'PUT', 
+          body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
+        }).then((resp) => { 
+          return resp.json(); // or resp.text() or whatever the server sends 
+        }).then((body) => { 
+          alert("Update succeded") 
         // TODO handle body 
-      }).catch((error) => { 
+        }).catch((error) => { 
         // TODO handle error 
-        alert("Update failed " + error ) 
-      }); 
-    }); 
+          alert("Update failed " + error ) 
+        }); 
+        }); 

@@ -6,14 +6,14 @@ block content
   form(id='GemsForm', action="/resource/Gems", method="POST") 
     div.form-group 
         label.gemsAttr(for='Gems_type') Gems type 
-        input#gems_type(type='text', name='Gems_type') 
+        input#gems_type(type='text',class="form-control" name='Gems_type') 
     div.form-group 
         label.gemsAttr(for='size') Gems size 
-        input#size(type='text', name='size') 
+        input#size(type='text',class="form-control", name='size') 
     div.form-group 
         label.gemsAttr(for='cost') Gems cost 
-        input#cost(type='number', name='cost') 
-    input(type="submit") 
+        input#cost(type='number',class="form-control", name='cost') 
+    input(type="submit" class="btn btn-primary m-2") 
  
   script. 
     document.forms['GemsForm'].addEventListener('submit', (event) => { 
