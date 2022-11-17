@@ -75,3 +75,15 @@ exports.Gems_view_all_Page = async function (req, res) {
         res.send(`{"error": ${err}}`);
     }
 };
+// Handle Costume delete on DELETE. 
+exports.Gems_delete = async function(req, res) { 
+    console.log("delete "  + req.params.id) 
+    try { 
+        result = await Gems.findByIdAndDelete( req.params.id) 
+        console.log("Removed " + result) 
+        res.send(result) 
+    } catch (err) { 
+        res.status(500) 
+        res.send(`{"error": Error deleting ${err}}`); 
+    } 
+}; 

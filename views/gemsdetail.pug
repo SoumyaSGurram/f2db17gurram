@@ -1,0 +1,22 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  - let gemsid = toShow._id 
+  - let gems_type = toShow.gems_type 
+  - let gemscost = toShow.cost 
+  - let gemssize = toShow.size 
+  div 
+    div.row 
+      div(class='gemsAttr mr-3') Gems ID is: 
+      div #{gemsid} 
+    div.row 
+      div(class='gemsAttr mr-3') Gems Type is: 
+      div #{gems_type} 
+    div.row 
+      div(class='gemsAttr mr-3') Gems Size is: 
+      div #{gemssize} 
+    div.row 
+      div(class='gemsAttr mr-3') Gems Cost is: 
+      div #{gemscost} 
