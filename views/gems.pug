@@ -1,14 +1,23 @@
 extends layout
 block content
   h1= title
+  - let create_destination = `dispatch(\"/resource/create")` 
+  button.btn( class="btn-secondary ml-1",id="create" onclick= create_destination) Create 
   //- let results = [{LapisLazuu:35, RedJasper:45, opal :95},{LapisLazuu:15 , RedJasper:30, opal:20},{LapisLazuu:80 , RedJasper:50, opal:25}]
   -let result=results;
   div(class="container-fluid mt-3")
   div(class="row")
     each temp,index in result
-        - let destination = `dispatch(\"/resource/update?id=${temp._id}\")` 
-        div(class="col-sm-2" )   #{temp.gems_type} <br/> -  #{temp.size} <br/> - #{temp.cost} <br/>
-        button.btn( class="btn-success ml-1", onclick= destination) Update 
+        - let update_destination = `dispatch(\"/resource/update?id=${temp._id}\")` 
+        - let detailview_destination = `dispatch(\"/resource/detail?id=${temp._id}\")` 
+        - let delete_destination = `dispatch(\"/resource/delete?id=${temp._id}\")` 
+        div(class="col-sm-12" )   #{temp.gems_type} <br/> -  #{temp.size} <br/> - #{temp.cost} <br/>
+          button.btn( class="btn-info ml-1", onclick= update_destination) Update 
+            button.btn( class="btn-warning ml-1", onclick= detailview_destination) Detail View
+              button.btn( class="btn-danger ml-1", onclick= delete_destination) Delete 
+            br
+
+
   br
   div(class="container-fluid")
     div(class="row")

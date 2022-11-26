@@ -56,7 +56,7 @@ Gems({gems_type:"LapisLazuu",  size:"large",
       if(err) return console.error(err); 
       console.log("First object saved") 
   }); 
-} 
+
 let instance2 = new 
 Gems({gems_type:"RedJasper",  size:"Medium", 
   cost:15}); 
@@ -71,6 +71,7 @@ Gems({gems_type:"opal",  size:"Small",
       if(err) return console.error(err); 
       console.log("Third object saved") 
   });
+}
  
 let reseed = true; 
 if (reseed) { recreateDB();} 

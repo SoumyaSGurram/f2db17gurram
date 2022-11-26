@@ -4,6 +4,15 @@ var router = express.Router();
 var api_controller = require('../controllers/api');
 var Gems_controller = require('../controllers/controllersgems');
 var Gems_controller_views = require('../controllers/controllersgems_views');
+// A little function to check if we have an authorized user and continue on 
+// redirect to login. 
+const secured = (req, res, next) => { 
+    if (req.user){ 
+      return next(); 
+    } 
+    req.session.returnTo = req.originalUrl; 
+    res.redirect("/login"); 
+  } 
 
 /// API ROUTE ///
 // GET resources base.
@@ -24,12 +33,12 @@ router.get('/Gems', Gems_controller.Gems_list);
 router.get('/detail', Gems_controller_views.Gems_view_one_Page); 
 
 /* GET create costume page */ 
-router.get('/create', Gems_controller_views.Gems_create_Page); 
+router.get('/create',secured, Gems_controller_views.Gems_create_Page); 
 
 /* GET create update page */ 
-router.get('/update', Gems_controller_views.Gems_update_Page); 
+router.get('/update',secured, Gems_controller_views.Gems_update_Page); 
 
 /* GET delete costume page */ 
-router.get('/delete', Gems_controller_views.Gems_delete_Page); 
+router.get('/delete',secured, Gems_controller_views.Gems_delete_Page); 
  
 module.exports = router;
